@@ -12,5 +12,24 @@
 %num_evals: total number of calls made to rate_func_in during the integration
 
 function [t_list,X_list,h_avg, num_evals] = forward_euler_fixed_step_integration(rate_func_in,tspan,X0,h_ref)
-  %your code here
+  %Initialise the lists
+  t_list = [];
+  X_list = [];
+  num_evals = 0;
+  
+  %Find h_avg
+  t0 = tspan(1);
+  tf = tspan(2);
+
+  N = (tf-t0)/h_ref; %N when it satisfies this equation
+  N = N + 0.00000000000000001;
+   
+  X_current = X0;
+  for t = t0:tf
+      t_list(t) = t;
+      [Xn, num_evals_n] = forward_euler_step(@rate_func_in, t, X_current, h_ref);
+      num_evals = num_evals + num_evals_n;
+      X_list(t) = Xn;
+      X_current = Xn;
+  end
 end
