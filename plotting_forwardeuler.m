@@ -9,6 +9,8 @@ function plotting_forwardeuler()
     title("Forward Euler Integration", "Interpreter", "latex", "FontSize", 17);
     xlabel("t(-)", "Interpreter", "latex", "FontSize", 13); ylabel("X(t)(-)", "Interpreter", "latex", "FontSize", 13);
     hold on;
-    plot(t_list, X_list);
+    h1 = plot(t_list, X_list, 'r--');
+
+    legend(h1, "h = 0.1", "Location", "northeast", "Interpreter", "latex")
     hold off;
 end
