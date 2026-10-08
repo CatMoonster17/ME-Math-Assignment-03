@@ -28,7 +28,7 @@ function [t_list,X_list,h_avg, num_evals] = forward_euler_fixed_step_integration
    
   X_current = X0;
 
-  t_span = linspace(t0, tf, h_avg); %Generate list of times
+  t_span = linspace(t0, tf, N); %Generate list of times
   for i = 1:length(t_span)
       t = t_span(i);
       t_list(i) = t; %Add to time vector
