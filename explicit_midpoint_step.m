@@ -14,8 +14,8 @@
 function [XB,num_evals] = explicit_midpoint_step(rate_func_in,t,XA,h)
     dXdt = rate_func_in(t, XA);
     half_h = h/2;
-    XB_half = Xa + (half_h*dXdt);
+    XB_half = XA + (half_h*dXdt);
     DX = rate_func_in(t + half_h, XB_half);
     XB = DX + (h*DX);
-    num_evals = 1;
+    num_evals = 2; % corrected because we call it once for XB_half and DX
 end
