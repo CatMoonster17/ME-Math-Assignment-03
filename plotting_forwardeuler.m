@@ -39,6 +39,8 @@ function plotting_forwardeuler()
     poly = polyfit(h_log, e_log, 1);
     yfit = 10.^polyval(poly, h_log);
 
+    p = poly(1) %Found p value!
+
     figure()
     hold on;
     axis normal
