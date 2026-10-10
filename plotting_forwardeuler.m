@@ -29,11 +29,24 @@ function plotting_forwardeuler()
     hold off;
 
     %%Error Computation%%
-    h_list = linspace(10e-5, 10e1, 100);
-    e_list = localError(@solution01, @rate_func01, t_span, Xa, h_list);
-
-    figure();
-    loglog(e_list, h_list)
-
+    h_list = logspace(-5, 1, 100);
+    e_list = localError(@solution01, @rate_func01, h_list);
     
+    %Get log values
+    h_log = log10(h_list);
+    e_log = log10(e_list);
+
+    poly = polyfit(h_log, e_log, 1);
+    yfit = 10.^polyval(poly, h_log);
+
+    figure()
+    hold on;
+    axis normal
+    loglog(10.^h_log, yfit, 'k--');
+    loglog(h_list, e_list, 'r.');
+    title('Local Trunction Error v. h value', 'Interpreter', 'Latex', 'FontSize', 17);
+    xlabel('h(-)', 'Interpreter', 'Latex', 'FontSize', 13);
+    ylabel('Error(-)', 'Interpreter', 'Latex', 'FontSize', 13);
+    set(gca, 'XScale', 'log'); set(gca,'YScale', 'log');
+    hold off;
 end
