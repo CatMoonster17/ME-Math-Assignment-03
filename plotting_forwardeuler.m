@@ -27,4 +27,13 @@ function plotting_forwardeuler()
 
     legend([p4, p1, p2, p3], "Analytical solution", "h = " + h_avg1, "h = " + h_avg2, "h = " + h_avg3, "Location", "northeast", "Interpreter", "latex")
     hold off;
+
+    %%Error Computation%%
+    h_list = linspace(10e-5, 10e1, 100);
+    e_list = localError(@solution01, @rate_func01, t_span, Xa, h_list);
+
+    figure();
+    loglog(e_list, h_list)
+
+    
 end
