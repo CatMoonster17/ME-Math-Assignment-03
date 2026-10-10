@@ -65,7 +65,7 @@ function [X, exit_flag] = multi_newton_solver(fun,x_guess,solver_params)
 
         % terminate early if solution is sufficently correct
         if norm(f) < ftol
-            fprintf('ftol\n');
+            %fprintf('ftol\n');
             X = X0;
             exit_flag = 1;
             return
