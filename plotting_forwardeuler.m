@@ -27,28 +27,4 @@ function plotting_forwardeuler()
 
     legend([p4, p1, p2, p3], "Analytical solution", "h = " + h_avg1, "h = " + h_avg2, "h = " + h_avg3, "Location", "northeast", "Interpreter", "latex")
     hold off;
-
-    %%Error Computation%%
-    h_list = logspace(-5, 1, 100);
-    e_list = localError(@solution01, @rate_func01, h_list);
-    
-    %Get log values
-    h_log = log10(h_list);
-    e_log = log10(e_list);
-
-    poly = polyfit(h_log, e_log, 1);
-    yfit = 10.^polyval(poly, h_log);
-
-    p = poly(1) %Found p value!
-
-    figure()
-    hold on;
-    axis normal
-    loglog(10.^h_log, yfit, 'k--');
-    loglog(h_list, e_list, 'r.');
-    title('Local Trunction Error v. h value', 'Interpreter', 'Latex', 'FontSize', 17);
-    xlabel('h(-)', 'Interpreter', 'Latex', 'FontSize', 13);
-    ylabel('Error(-)', 'Interpreter', 'Latex', 'FontSize', 13);
-    set(gca, 'XScale', 'log'); set(gca,'YScale', 'log');
-    hold off;
 end
