@@ -8,10 +8,10 @@ function globalerrorplotting()
     e_log_eul = log10(e_list_eul);
     e_log_mid = log10(e_list_mid);
 
-    poly_eul = polyfit(h_log, e_log_eul, 1);
+    poly_eul = polyfit(h_log(1:75), e_log_eul(1:75), 1);
     yfit_eul = 10.^polyval(poly_eul, h_log);
 
-    poly_mid = polyfit(h_log, e_log_mid, 1);
+    poly_mid = polyfit(h_log(1:75), e_log_mid(1:75), 1);
     yfit_mid = 10.^polyval(poly_mid, h_log);
 
     p_eul = poly_eul(1) %Found p value!
@@ -19,8 +19,8 @@ function globalerrorplotting()
 
     figure()
     hold on;
-    loglog(10.^h_log, yfit_eul, 'k--');
-    loglog(h_list, e_list_eul, 'r.');
+    loglog(10.^h_log(1:75), yfit_eul(1:75), 'k--');
+    loglog(h_list(1:75), e_list_eul(1:75), 'r.');
     title('Local Trunction Error (Forward Euler)', 'Interpreter', 'Latex', 'FontSize', 17);
     xlabel('h(-)', 'Interpreter', 'Latex', 'FontSize', 13);
     ylabel('Error(-)', 'Interpreter', 'Latex', 'FontSize', 13);
@@ -29,7 +29,7 @@ function globalerrorplotting()
 
     figure()
     hold on;
-    loglog(10.^h_log, yfit_mid, 'k--');
+    loglog(10.^h_log(1:75), yfit_mid(1:75), 'k--');
     loglog(h_list, e_list_mid, 'r.');
     title('Local Trunction Error (Explicit Midpoint)', 'Interpreter', 'Latex', 'FontSize', 17);
     xlabel('h(-)', 'Interpreter', 'Latex', 'FontSize', 13);
