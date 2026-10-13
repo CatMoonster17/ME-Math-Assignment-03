@@ -20,9 +20,10 @@
 %OUTPUTS:
 %x: the estimate of the root computed by the function
 % exit_flag: an integer indicating whether or not the solver succeeded (1 = succeeded)
-function [X, exit_flag] = multi_newton_solver(fun,x_guess,solver_params)
+function [X, exit_flag, num_iter] = multi_newton_solver(fun,x_guess,solver_params)
 
 %unpack values from struct (if fields in struct have been set)
+    num_iter = 1;
     dXmin = 1e-14;
     if isfield(solver_params,'dxmin')
         dXmin = solver_params.dxmin;
@@ -105,6 +106,7 @@ function [X, exit_flag] = multi_newton_solver(fun,x_guess,solver_params)
         % next iteration
         X0 = X1;
         hold on
+        num_iter = num_iter+1;
     end
    X = X0;
 % exit_flag = 0;

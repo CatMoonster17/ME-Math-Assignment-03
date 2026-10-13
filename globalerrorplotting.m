@@ -21,7 +21,7 @@ function globalerrorplotting()
     hold on;
     loglog(10.^h_log(1:75), yfit_eul(1:75), 'k--');
     loglog(h_list(1:75), e_list_eul(1:75), 'r.');
-    title('Local Trunction Error (Forward Euler)', 'Interpreter', 'Latex', 'FontSize', 17);
+    title('Global Trunction Error (Forward Euler)', 'Interpreter', 'Latex', 'FontSize', 17);
     xlabel('h(-)', 'Interpreter', 'Latex', 'FontSize', 13);
     ylabel('Error(-)', 'Interpreter', 'Latex', 'FontSize', 13);
     set(gca, 'XScale', 'log'); set(gca,'YScale', 'log');
@@ -31,7 +31,7 @@ function globalerrorplotting()
     hold on;
     loglog(10.^h_log(1:75), yfit_mid(1:75), 'k--');
     loglog(h_list, e_list_mid, 'r.');
-    title('Local Trunction Error (Explicit Midpoint)', 'Interpreter', 'Latex', 'FontSize', 17);
+    title('Global Trunction Error (Explicit Midpoint)', 'Interpreter', 'Latex', 'FontSize', 17);
     xlabel('h(-)', 'Interpreter', 'Latex', 'FontSize', 13);
     ylabel('Error(-)', 'Interpreter', 'Latex', 'FontSize', 13);
     set(gca, 'XScale', 'log'); set(gca,'YScale', 'log');
