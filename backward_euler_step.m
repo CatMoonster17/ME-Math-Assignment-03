@@ -13,6 +13,8 @@
 % rate_func_in when computing the next step
 function [XB,num_evals] = backward_euler_step(rate_func_in,t,XA,h)
     func = @(XB) (XA + h*rate_func_in(t+h, XB) - XB);
-    [XB, ~, num_iter] = multi_newton_solver(func, XA);
-    num_evals = iter + 1;
+    solver_params = define_solver_params();
+    [XB, ~, num_iter] = multi_newton_solver(func, XA, solver_params);
+    solver_params.numerical_diff = 1;
+    num_evals = num_iter + 1;
 end

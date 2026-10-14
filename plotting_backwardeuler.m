@@ -15,9 +15,9 @@ function plotting_backwardeuler()
     t_an = linspace(0, 2*pi, 1000);
     X_an = solution01(t_an);
     
-    figure()
+    %figure()
     axis equal
-    title("Forward Euler Integration", "Interpreter", "latex", "FontSize", 17);
+    title("Backward Euler Integration", "Interpreter", "latex", "FontSize", 17);
     xlabel("t(-)", "Interpreter", "latex", "FontSize", 13); ylabel("X(t)(-)", "Interpreter", "latex", "FontSize", 13);
     hold on;
     p1 = plot(t_list1, X_list1, 'r.-');
