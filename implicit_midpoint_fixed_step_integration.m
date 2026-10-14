@@ -34,7 +34,7 @@ function [t_list,X_list,h_avg, num_evals] = implicit_midpoint_fixed_step_integra
       t_list(i) = t; %Add to time vector
       [Xn, num_evals_n] = implicit_midpoint_step(rate_func_in, t, X_current, h_avg); %Evaluate new X
       num_evals = num_evals + num_evals_n;
-      X_list(i) = Xn; %Add to X value vector
+      X_list(:, i) = Xn; %Add to X value vector
       X_current = Xn;
   end
 end

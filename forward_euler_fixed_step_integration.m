@@ -14,7 +14,6 @@
 function [t_list,X_list,h_avg, num_evals] = forward_euler_fixed_step_integration(rate_func_in,tspan,X0,h_ref)
   %Initialise the lists
   t_list = [];
-  X_list = [];
   num_evals = 0;
   
   %Find h_avg
@@ -28,13 +27,14 @@ function [t_list,X_list,h_avg, num_evals] = forward_euler_fixed_step_integration
    
   X_current = X0;
 
-  t_span = linspace(t0, tf, N); %Generate list of times
+  t_span = linspace(t0, tf, N);
+  X_list = zeros(length(X0), N);%Generate list of times
   for i = 1:length(t_span)
       t = t_span(i);
       t_list(i) = t; %Add to time vector
       [Xn, num_evals_n] = forward_euler_step(rate_func_in, t, X_current, h_avg); %Evaluate new X
       num_evals = num_evals + num_evals_n;
-      X_list(i) = Xn; %Add to X value vector
+      X_list(:, i) = Xn; %Add to X value vector
       X_current = Xn;
   end
 end
