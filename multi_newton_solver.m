@@ -105,7 +105,7 @@ function [X, exit_flag, num_iter] = multi_newton_solver(fun,x_guess,solver_param
         
         % next iteration
         X0 = X1;
-        hold on
+        %hold on;
         num_iter = num_iter+1;
     end
    X = X0;
