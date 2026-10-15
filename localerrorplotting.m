@@ -28,41 +28,43 @@ function localerrorplotting()
 
     figure()
     hold on;
-    loglog(10.^h_log, yfit_for, 'k--');
-    loglog(h_list, e_list_for, 'r.');
-    title('Local Trunction Error (Forward Euler)', 'Interpreter', 'Latex', 'FontSize', 17);
+    %a1 = loglog(10.^h_log, yfit_for, 'k--');
+    a1 = loglog(h_list, e_list_for, 'r.-');
+    % title('Local Trunction Error vs. h Value (Explicit Methods)', 'Interpreter', 'Latex', 'FontSize', 17);
+    % xlabel('h(-)', 'Interpreter', 'Latex', 'FontSize', 13);
+    % ylabel('Error(-)', 'Interpreter', 'Latex', 'FontSize', 13);
+    % legend()
+    % set(gca, 'XScale', 'log'); set(gca,'YScale', 'log');
+    % hold off;
+    % 
+    % figure()
+    % hold on;
+    % loglog(10.^h_log, yfit_back, 'k--');
+    a2 = loglog(h_list, e_list_back, 'b.-');
+    % title('Local Trunction Error (Backward Euler)', 'Interpreter', 'Latex', 'FontSize', 17);
+    % xlabel('h(-)', 'Interpreter', 'Latex', 'FontSize', 13);
+    % ylabel('Error(-)', 'Interpreter', 'Latex', 'FontSize', 13);
+    % set(gca, 'XScale', 'log'); set(gca,'YScale', 'log');
+    % hold off;
+    % 
+    % figure()
+    %hold on;
+    % loglog(10.^h_log, yfit_imp, 'k--');
+    b1 = loglog(h_list, e_list_imp, 'g.-');
+    % title('Local Trunction Error (Implicit Midpoint)', 'Interpreter', 'Latex', 'FontSize', 17);
+    % xlabel('h(-)', 'Interpreter', 'Latex', 'FontSize', 13);
+    % ylabel('Error(-)', 'Interpreter', 'Latex', 'FontSize', 13);
+    % set(gca, 'XScale', 'log'); set(gca,'YScale', 'log');
+    % hold off;
+    % 
+    % figure()
+    % hold on;
+    %b1 = loglog(10.^h_log, yfit_exp, 'b--');
+    b2 = loglog(h_list, e_list_exp, 'm.-');
+    title('Local Trunction Error vs. Time Step', 'Interpreter', 'Latex', 'FontSize', 17);
     xlabel('h(-)', 'Interpreter', 'Latex', 'FontSize', 13);
     ylabel('Error(-)', 'Interpreter', 'Latex', 'FontSize', 13);
-    set(gca, 'XScale', 'log'); set(gca,'YScale', 'log');
-    hold off;
-
-    figure()
-    hold on;
-    loglog(10.^h_log, yfit_back, 'k--');
-    loglog(h_list, e_list_back, 'r.');
-    title('Local Trunction Error (Backward Euler)', 'Interpreter', 'Latex', 'FontSize', 17);
-    xlabel('h(-)', 'Interpreter', 'Latex', 'FontSize', 13);
-    ylabel('Error(-)', 'Interpreter', 'Latex', 'FontSize', 13);
-    set(gca, 'XScale', 'log'); set(gca,'YScale', 'log');
-    hold off;
-
-    figure()
-    hold on;
-    loglog(10.^h_log, yfit_imp, 'k--');
-    loglog(h_list, e_list_imp, 'r.');
-    title('Local Trunction Error (Implicit Midpoint)', 'Interpreter', 'Latex', 'FontSize', 17);
-    xlabel('h(-)', 'Interpreter', 'Latex', 'FontSize', 13);
-    ylabel('Error(-)', 'Interpreter', 'Latex', 'FontSize', 13);
-    set(gca, 'XScale', 'log'); set(gca,'YScale', 'log');
-    hold off;
-
-    figure()
-    hold on;
-    loglog(10.^h_log, yfit_exp, 'k--');
-    loglog(h_list, e_list_exp, 'r.');
-    title('Local Trunction Error (Explicit Midpoint)', 'Interpreter', 'Latex', 'FontSize', 17);
-    xlabel('h(-)', 'Interpreter', 'Latex', 'FontSize', 13);
-    ylabel('Error(-)', 'Interpreter', 'Latex', 'FontSize', 13);
+    legend([a1, a2, b1, b2], "Forward Euler", "Backward Euler", "Explicit Midpoint", "Implicit Midpoint", "Location", "NorthWest")
     set(gca, 'XScale', 'log'); set(gca,'YScale', 'log');
     hold off;
 end

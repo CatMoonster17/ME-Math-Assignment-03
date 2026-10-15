@@ -41,79 +41,80 @@ function globalerrorplotting()
     p_exp = poly_exp(1) %Found p value!
     p_imp = poly_imp(1) %Found p value!
 
-    figure()
-    hold on;
-    loglog(10.^h_log(1:g), yfit_for(1:g), 'k--');
-    loglog(h_list(1:g), e_list_for(1:g), 'r.');
-    title('Global Trunction Error (Forward Euler)', 'Interpreter', 'Latex', 'FontSize', 17);
-    xlabel('h(-)', 'Interpreter', 'Latex', 'FontSize', 13);
-    ylabel('Error(-)', 'Interpreter', 'Latex', 'FontSize', 13);
-    set(gca, 'XScale', 'log'); set(gca,'YScale', 'log');
-    hold off;
-
-    figure()
-    hold on;
-    loglog(10.^h_log(1:g), yfit_back(1:g), 'k--');
-    loglog(h_list(1:g), e_list_back(1:g), 'r.');
-    title('Global Trunction Error (Backward Euler)', 'Interpreter', 'Latex', 'FontSize', 17);
-    xlabel('h(-)', 'Interpreter', 'Latex', 'FontSize', 13);
-    ylabel('Error(-)', 'Interpreter', 'Latex', 'FontSize', 13);
-    set(gca, 'XScale', 'log'); set(gca,'YScale', 'log');
-    hold off;
-
-    figure()
-    hold on;
-    loglog(10.^h_log(1:g), yfit_imp(1:g), 'k--');
-    loglog(h_list(1:g), e_list_imp(1:g), 'r.');
-    title('Global Trunction Error (Implicit Midpoint)', 'Interpreter', 'Latex', 'FontSize', 17);
-    xlabel('h(-)', 'Interpreter', 'Latex', 'FontSize', 13);
-    ylabel('Error(-)', 'Interpreter', 'Latex', 'FontSize', 13);
-    set(gca, 'XScale', 'log'); set(gca,'YScale', 'log');
-    hold off;
-
-    figure()
-    hold on;
-    loglog(10.^h_log(1:g), yfit_exp(1:g), 'k--');
-    loglog(h_list(1:g), e_list_exp(1:g), 'r.');
-    title('Global Trunction Error (Explicit Midpoint)', 'Interpreter', 'Latex', 'FontSize', 17);
-    xlabel('h(-)', 'Interpreter', 'Latex', 'FontSize', 13);
-    ylabel('Error(-)', 'Interpreter', 'Latex', 'FontSize', 13);
-    set(gca, 'XScale', 'log'); set(gca,'YScale', 'log');
-    hold off;
+    % figure()
+    % hold on;
+    % loglog(10.^h_log(1:g), yfit_for(1:g), 'k--');
+    % loglog(h_list(1:g), e_list_for(1:g), 'r.');
+    % title('Global Trunction Error (Forward Euler)', 'Interpreter', 'Latex', 'FontSize', 17);
+    % xlabel('h(-)', 'Interpreter', 'Latex', 'FontSize', 13);
+    % ylabel('Error(-)', 'Interpreter', 'Latex', 'FontSize', 13);
+    % set(gca, 'XScale', 'log'); set(gca,'YScale', 'log');
+    % hold off;
+    % 
+    % figure()
+    % hold on;
+    % loglog(10.^h_log(1:g), yfit_back(1:g), 'k--');
+    % loglog(h_list(1:g), e_list_back(1:g), 'r.');
+    % title('Global Trunction Error (Backward Euler)', 'Interpreter', 'Latex', 'FontSize', 17);
+    % xlabel('h(-)', 'Interpreter', 'Latex', 'FontSize', 13);
+    % ylabel('Error(-)', 'Interpreter', 'Latex', 'FontSize', 13);
+    % set(gca, 'XScale', 'log'); set(gca,'YScale', 'log');
+    % hold off;
+    % 
+    % figure()
+    % hold on;
+    % loglog(10.^h_log(1:g), yfit_imp(1:g), 'k--');
+    % loglog(h_list(1:g), e_list_imp(1:g), 'r.');
+    % title('Global Trunction Error (Implicit Midpoint)', 'Interpreter', 'Latex', 'FontSize', 17);
+    % xlabel('h(-)', 'Interpreter', 'Latex', 'FontSize', 13);
+    % ylabel('Error(-)', 'Interpreter', 'Latex', 'FontSize', 13);
+    % set(gca, 'XScale', 'log'); set(gca,'YScale', 'log');
+    % hold off;
+    % 
+    % figure()
+    % hold on;
+    % loglog(10.^h_log(1:g), yfit_exp(1:g), 'k--');
+    % loglog(h_list(1:g), e_list_exp(1:g), 'r.');
+    % title('Global Trunction Error (Explicit Midpoint)', 'Interpreter', 'Latex', 'FontSize', 17);
+    % xlabel('h(-)', 'Interpreter', 'Latex', 'FontSize', 13);
+    % ylabel('Error(-)', 'Interpreter', 'Latex', 'FontSize', 13);
+    % set(gca, 'XScale', 'log'); set(gca,'YScale', 'log');
+    %hold off;
     
     figure()
     hold on;
     loglog(for_evals, e_list_for, 'r.-');
-    title('Global Trunction Error v. Num Evals (Forwards Euler)', 'Interpreter', 'Latex', 'FontSize', 17);
+    % title('Global Trunction Error v. Num Evals (Forwards Euler)', 'Interpreter', 'Latex', 'FontSize', 17);
+    % xlabel('Number of Evals', 'Interpreter', 'Latex', 'FontSize', 13);
+    % ylabel('Error(-)', 'Interpreter', 'Latex', 'FontSize', 13);
+    % set(gca, 'XScale', 'log'); set(gca,'YScale', 'log');
+    % hold off;
+    % 
+    % figure()
+    % hold on;
+     loglog(back_evals, e_list_back, 'g.-');
+    % title('Global Trunction Error v. Num Evals (Backwards Euler)', 'Interpreter', 'Latex', 'FontSize', 17);
+    % xlabel('Number of Evals', 'Interpreter', 'Latex', 'FontSize', 13);
+    % ylabel('Error(-)', 'Interpreter', 'Latex', 'FontSize', 13);
+    % set(gca, 'XScale', 'log'); set(gca,'YScale', 'log');
+    % hold off;
+    % 
+    % figure()
+    % hold on;
+    loglog(exp_evals, e_list_exp, 'b.-');
+    % title('Global Trunction Error v. Num Evals (Explicit Midpoint)', 'Interpreter', 'Latex', 'FontSize', 17);
+    % xlabel('Number of Evals', 'Interpreter', 'Latex', 'FontSize', 13);
+    % ylabel('Error(-)', 'Interpreter', 'Latex', 'FontSize', 13);
+    % set(gca, 'XScale', 'log'); set(gca,'YScale', 'log');
+    % hold off;
+    % 
+    % figure()
+    % hold on;
+    loglog(imp_evals, e_list_imp, 'm.-');
+    title('Global Trunction Error v. Num Evals', 'Interpreter', 'Latex', 'FontSize', 17);
     xlabel('Number of Evals', 'Interpreter', 'Latex', 'FontSize', 13);
     ylabel('Error(-)', 'Interpreter', 'Latex', 'FontSize', 13);
-    set(gca, 'XScale', 'log'); set(gca,'YScale', 'log');
-    hold off;
-
-    figure()
-    hold on;
-    loglog(back_evals, e_list_back, 'r.-');
-    title('Global Trunction Error v. Num Evals (Backwards Euler)', 'Interpreter', 'Latex', 'FontSize', 17);
-    xlabel('Number of Evals', 'Interpreter', 'Latex', 'FontSize', 13);
-    ylabel('Error(-)', 'Interpreter', 'Latex', 'FontSize', 13);
-    set(gca, 'XScale', 'log'); set(gca,'YScale', 'log');
-    hold off;
-
-    figure()
-    hold on;
-    loglog(exp_evals, e_list_exp, 'r.-');
-    title('Global Trunction Error v. Num Evals (Explicit Midpoint)', 'Interpreter', 'Latex', 'FontSize', 17);
-    xlabel('Number of Evals', 'Interpreter', 'Latex', 'FontSize', 13);
-    ylabel('Error(-)', 'Interpreter', 'Latex', 'FontSize', 13);
-    set(gca, 'XScale', 'log'); set(gca,'YScale', 'log');
-    hold off;
-
-    figure()
-    hold on;
-    loglog(imp_evals, e_list_imp, 'r.-');
-    title('Global Trunction Error v. Num Evals (Implicit Midpoint)', 'Interpreter', 'Latex', 'FontSize', 17);
-    xlabel('Number of Evals', 'Interpreter', 'Latex', 'FontSize', 13);
-    ylabel('Error(-)', 'Interpreter', 'Latex', 'FontSize', 13);
+    legend("Forward Euler", "Backward Euler", "Explicit Midpoint", "Implicit Midpoint", "Location", "NorthEast");
     set(gca, 'XScale', 'log'); set(gca,'YScale', 'log');
     hold off;
 
