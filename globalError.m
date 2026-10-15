@@ -1,4 +1,4 @@
-function [e_list_for, e_list_back, e_list_exp, e_list_imp, for_evals, back_evals, exp_evals, imp_evals] = globalError(solution, rate_func_in, tspan, h_list)
+function [e_list_for, e_list_back, e_list_exp, e_list_imp, for_evals, back_evals, exp_evals, imp_evals] = globalError(solution, rate_func_in, tspan, h_list, num)
     n = length(h_list);
 
     e_list_for = zeros(n,1);
@@ -23,7 +23,11 @@ function [e_list_for, e_list_back, e_list_exp, e_list_imp, for_evals, back_evals
 
         e_list_for(j) = norm(X_an1(:, end) - X_real);
         e_list_back(j) = norm(X_an2(:, end) - X_real);
-        e_list_exp(j) = norm(X_an3(:, end).' - X_real);
+        if num == 1
+            e_list_exp(j) = norm(X_an3(end) - X_real);
+        elseif num ==2
+            e_list_exp(j) = norm(X_an3(:, end).' - X_real);
+        end
         e_list_imp(j) = norm(X_an4(:, end) - X_real);
 
         for_evals(j) = iter1;

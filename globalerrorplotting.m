@@ -1,5 +1,5 @@
 function globalerrorplotting()
-    funcnum = 2; 
+    funcnum = 1; 
     g = 0;
 
     if funcnum == 1
@@ -14,7 +14,7 @@ function globalerrorplotting()
 
     h_list = logspace(-3, 1, 100);
     t_span = [0, 2*pi];
-    [e_list_for, e_list_back, e_list_exp, e_list_imp, for_evals, back_evals, exp_evals, imp_evals] = globalError(sol, func, t_span, h_list);
+    [e_list_for, e_list_back, e_list_exp, e_list_imp, for_evals, back_evals, exp_evals, imp_evals] = globalError(sol, func, t_span, h_list, funcnum);
     
 
     %Get log values
