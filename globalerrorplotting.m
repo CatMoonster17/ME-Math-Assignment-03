@@ -116,4 +116,9 @@ function globalerrorplotting()
     ylabel('Error(-)', 'Interpreter', 'Latex', 'FontSize', 13);
     set(gca, 'XScale', 'log'); set(gca,'YScale', 'log');
     hold off;
+
+    for_num_evals = for_evals(end);
+    back_num_evals = back_evals(end);
+    exp_num_evals = exp_evals(end);
+    imp_num_evals = imp_evals(end);
 end
