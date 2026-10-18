@@ -5,7 +5,7 @@ function plotting_explicitMidpoint()
     h1 = 0.1; %delta t
     [t_list1,X_list1,h_avg1, num_evals1] = explicit_midpoint_fixed_step_integration(@rate_func01,t_span,Xa,h1);
 
-    h2 = 0.25; %delta t
+    h2 = 0.4; %delta t
     [t_list2,X_list2,h_avg2, num_evals2] = explicit_midpoint_fixed_step_integration(@rate_func01,t_span,Xa,h2);
 
     h3 = 0.45; %delta t
@@ -18,7 +18,7 @@ function plotting_explicitMidpoint()
     figure()
     axis equal
     title("Explicit Midpoint Integration", "Interpreter", "latex", "FontSize", 17);
-    xlabel("t(-)", "Interpreter", "latex", "FontSize", 13); ylabel("X(t)(-)", "Interpreter", "latex", "FontSize", 13);
+    xlabel("$t(-)$", "Interpreter", "latex", "FontSize", 13); ylabel("$X(t)(-)$", "Interpreter", "latex", "FontSize", 13);
     hold on;
     p1 = plot(t_list1, X_list1, 'r.-');
     p2 = plot(t_list2, X_list2, 'b.-');
@@ -27,4 +27,7 @@ function plotting_explicitMidpoint()
 
     legend([p4, p1, p2, p3], "Analytical solution", "h = " + h_avg1, "h = " + h_avg2, "h = " + h_avg3, "Location", "northeast", "Interpreter", "latex")
     hold off;
+
+    myfig = gcf(); %set myfig to the current figure
+    exportgraphics(myfig , 'explicitMidpointIntegration.png', 'Resolution', 600); %saves plot to plot_name at high resolution
 end
