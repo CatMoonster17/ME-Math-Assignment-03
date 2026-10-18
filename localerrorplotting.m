@@ -1,6 +1,6 @@
 function localerrorplotting()
-    h_list = logspace(-5, 1, 100);
-    [e_list_for, e_list_back, e_list_exp, e_list_imp] = localError(@solution01, @rate_func01, h_list);
+    h_list = logspace(-5, -1, 100);
+    [e_list_for, e_list_back, e_list_exp, e_list_imp] = localError(@solution02, @rate_func02, h_list);
     
     %Get log values
     h_log = log10(h_list);
@@ -29,7 +29,7 @@ function localerrorplotting()
     figure()
     hold on;
     %a1 = loglog(10.^h_log, yfit_for, 'k--');
-    a1 = loglog(h_list, e_list_for, 'r.-');
+    a1 = loglog(h_list, e_list_for, 'r.','MarkerSize', 15);
     % title('Local Trunction Error vs. h Value (Explicit Methods)', 'Interpreter', 'Latex', 'FontSize', 17);
     % xlabel('h(-)', 'Interpreter', 'Latex', 'FontSize', 13);
     % ylabel('Error(-)', 'Interpreter', 'Latex', 'FontSize', 13);
@@ -40,7 +40,7 @@ function localerrorplotting()
     % figure()
     % hold on;
     % loglog(10.^h_log, yfit_back, 'k--');
-    a2 = loglog(h_list, e_list_back, 'b.-');
+    a2 = loglog(h_list, e_list_back, 'b.','MarkerSize', 10);
     % title('Local Trunction Error (Backward Euler)', 'Interpreter', 'Latex', 'FontSize', 17);
     % xlabel('h(-)', 'Interpreter', 'Latex', 'FontSize', 13);
     % ylabel('Error(-)', 'Interpreter', 'Latex', 'FontSize', 13);
@@ -50,7 +50,7 @@ function localerrorplotting()
     % figure()
     %hold on;
     % loglog(10.^h_log, yfit_imp, 'k--');
-    b1 = loglog(h_list, e_list_imp, 'g.-');
+    b1 = loglog(h_list, e_list_imp, 'g.','MarkerSize', 15);
     % title('Local Trunction Error (Implicit Midpoint)', 'Interpreter', 'Latex', 'FontSize', 17);
     % xlabel('h(-)', 'Interpreter', 'Latex', 'FontSize', 13);
     % ylabel('Error(-)', 'Interpreter', 'Latex', 'FontSize', 13);
@@ -60,10 +60,10 @@ function localerrorplotting()
     % figure()
     % hold on;
     %b1 = loglog(10.^h_log, yfit_exp, 'b--');
-    b2 = loglog(h_list, e_list_exp, 'm.-');
-    title('Local Trunction Error vs. Time Step', 'Interpreter', 'Latex', 'FontSize', 17);
-    xlabel('h(-)', 'Interpreter', 'Latex', 'FontSize', 13);
-    ylabel('Error(-)', 'Interpreter', 'Latex', 'FontSize', 13);
+    b2 = loglog(h_list, e_list_exp, 'm.','MarkerSize', 10);
+    title('Local Trunction Error vs. Time Step Size', 'Interpreter', 'Latex', 'FontSize', 17);
+    xlabel('Time Step, $h (-)$', 'Interpreter', 'Latex', 'FontSize', 13);
+    ylabel('Local Truncation Error(-)', 'Interpreter', 'Latex', 'FontSize', 13);
     legend([a1, a2, b1, b2], "Forward Euler", "Backward Euler", "Explicit Midpoint", "Implicit Midpoint", "Location", "NorthWest")
     set(gca, 'XScale', 'log'); set(gca,'YScale', 'log');
     hold off;
