@@ -62,7 +62,19 @@ function plottingpleasework()
         forward_euler_fit = 10.^polyval(forward_euler_slope, log_forward_evals);
         forward_euler_p = forward_euler_slope(1)
 
-        loglog(explicit_evals(1:90), explicit_midpoint_fit, '-', 'Linewidth', 2, 'Color', [0.5 1 0.5], 'Displayname',"Exp. Mid. Fit");
+        loglog(forward_evals(1:90), forward_euler_error(1:90), 'r.', 'Displayname',"Forward Euler", "MarkerSize", 17);
         hold on;
-        loglog(forward_evals(1:90), forward_euler_fit, '-', 'Linewidth', 2, 'Color', [1 0.5 0.5], 'Displayname',"Forw. Euler Fit");
+        loglog(forward_evals(1:90), forward_euler_fit, 'k-', 'Displayname',"Forw. Euler Fit");
+        loglog(explicit_evals(1:90), explicit_midpoint_error(1:90), 'b.','Displayname',"Explicit Midpoint", "MarkerSize", 17);
+        loglog(explicit_evals(1:90), explicit_midpoint_fit, 'k-','Displayname',"Exp. Mid. Fit");
+
+        title('Global Trunction Error', 'Interpreter', 'Latex', 'FontSize', 17);
+        xlabel('$h(-)$', 'Interpreter', 'Latex', 'FontSize', 13);
+        ylabel('$Error, \epsilon (-)$', 'Interpreter', 'Latex', 'FontSize', 13);
+        set(gca, 'XScale', 'log'); set(gca,'YScale', 'log');
+        legend("Forward Euler", "Forward Euler Fit", "Backward Euler", "Backward Euler Fit", "Implicit Midpoint", "Implicit Midpoint Fit", "Explicit Midpoint", "Explicit Midpoint Fit", "Location", "Southeast", "Interpreter", "Latex")
+        hold off;
+
+        myfig = gcf(); %set myfig to the current figure
+    exportgraphics(myfig , 'globalExplicitNumEvals.png', 'Resolution', 600); %saves plot to plot_name at high resolution
 end
