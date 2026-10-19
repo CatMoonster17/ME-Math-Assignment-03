@@ -61,7 +61,7 @@ function localerrorplotting()
     % hold on;
     b1 = loglog(10.^h_log, yfit_exp, 'k-');
     b2 = loglog(h_list, e_list_exp, 'm.','MarkerSize', 10);
-    title('Local Trunction Error vs. Time Step Size (Explicit w/ Fit)', 'Interpreter', 'Latex', 'FontSize', 17);
+    title('Local Trunction Error vs. Time Step Size', 'Interpreter', 'Latex', 'FontSize', 17);
     xlabel('Time Step, $h (-)$', 'Interpreter', 'Latex', 'FontSize', 13);
     ylabel('Local Truncation Error, $\epsilon (-)$', 'Interpreter', 'Latex', 'FontSize', 13);
     %legend([a1, a2, b1, b2], "Forward Euler", "Backward Euler", "Explicit Midpoint", "Implicit Midpoint", "Location", "NorthWest")
